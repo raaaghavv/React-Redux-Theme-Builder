@@ -5,9 +5,7 @@ import { updateComponentStyle } from '../../redux/slices/themeBuilderSlice';
 // A reusable sub-panel for styling each state
 const StyleSection = ({ title, stateName, styles }) => {
   const dispatch = useDispatch();
-
-  // This handler is now more robust. It updates a nested object (like 'colors' or 'textStyle')
-  // within a specific state ('selectedState', 'nonSelectedState', etc.)
+  
   const handleStyleChange = (category, property, value) => {
     dispatch(
       updateComponentStyle({
@@ -19,7 +17,6 @@ const StyleSection = ({ title, stateName, styles }) => {
     );
   };
   
-  // Defensive check: If styles for this section don't exist, render nothing.
   if (!styles) {
     return null;
   }
@@ -67,13 +64,12 @@ const OptionsListPanel = () => {
     (state) => state.themeBuilder.currentTheme.components.optionsList
   );
 
-  // If the entire optionsList style object isn't ready, show a loading message.
   if (!styles) {
     return <div className="p-4 text-center">Loading options...</div>;
   }
 
-  return (
-    <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200">
+return (
+    <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 text-gray-800">
       <h3 className="text-xl font-bold mb-2">Option List Style</h3>
       
       <StyleSection

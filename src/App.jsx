@@ -18,8 +18,7 @@ function App() {
           className="fixed inset-0 bg-black opacity-50 z-10 md:hidden"
         ></div>
       )}
-
-      {/* The main content area is now much simpler */}
+      
       <div className="flex-1 flex flex-col">
         <div className="flex-1 md:m-4 md:border-2 md:border-gray-200 md:rounded-2xl overflow-hidden">
             <ThemeBuilder setMobileOpen={setMobileSidebarOpen} />

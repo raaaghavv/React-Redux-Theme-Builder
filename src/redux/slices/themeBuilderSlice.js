@@ -15,10 +15,8 @@ const themeBuilderSlice = createSlice({
       const { component, category, property, value } = action.payload;
       if (state.currentTheme.components[component]) {
         if (category) {
-          // For nested properties like colors, cornerRadius, etc.
           state.currentTheme.components[component][category][property] = value;
         } else {
-          // For direct properties
           state.currentTheme.components[component][property] = value;
         }
       }
@@ -32,7 +30,6 @@ const themeBuilderSlice = createSlice({
     loadTheme: (state, action) => {
       state.currentTheme = action.payload;
     },
-    // The saveTheme action is handled by middleware, so no reducer is needed
   },
 });
 

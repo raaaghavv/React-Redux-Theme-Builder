@@ -5,7 +5,6 @@ import { updateComponentStyle } from "../../redux/slices/themeBuilderSlice";
 const SubtitlePanel = () => {
   const dispatch = useDispatch();
 
-  // Select the specific styles for the 'subtitle' component
   const { colors, textStyle } = useSelector(
     (state) => state.themeBuilder.currentTheme.components.subtitle
   );
@@ -34,8 +33,8 @@ const SubtitlePanel = () => {
     );
   };
 
-  return (
-    <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200">
+return (
+    <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 text-gray-800">
       <h3 className="text-xl font-bold mb-6">Subtitle Component</h3>
       <div className="grid grid-cols-2 gap-x-8 gap-y-6">
         {/* Colour Input */}

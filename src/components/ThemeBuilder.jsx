@@ -1,14 +1,14 @@
-import React, { Suspense } from 'react'; // Make sure Suspense is imported
+import React, { Suspense } from 'react'; 
 import { useSelector } from 'react-redux';
 import useMediaQuery from '../hooks/useMediaQuery';
 import ElementList from './layouts/ElementList';
 import Preview from './layouts/Preview';
 import Header from './layouts/Header';
 
-// Lazily load both panels
 const TitlePanel = React.lazy(() => import('./panels/TitlePanel'));
 const SubtitlePanel = React.lazy(() => import('./panels/SubtitlePanel'));
-const OptionsListPanel = React.lazy(() => import('./panels/OptionsListPanel')); // Add this
+const OptionsListPanel = React.lazy(() => import('./panels/OptionsListPanel'));
+const PrimaryCTAPanel = React.lazy(() => import('./panels/PrimaryCTAPanel')); 
 
 const renderPanel = (selectedComponent) => {
   const PanelLoader = <div className="text-center p-10">Loading...</div>;
@@ -18,14 +18,15 @@ const renderPanel = (selectedComponent) => {
       return <Suspense fallback={PanelLoader}><TitlePanel /></Suspense>;
     case 'subtitle':
       return <Suspense fallback={PanelLoader}><SubtitlePanel /></Suspense>;
-    // Add the case for the optionsList
     case 'optionsList':
-        return <Suspense fallback={PanelLoader}><OptionsListPanel /></Suspense>
+      return <Suspense fallback={PanelLoader}><OptionsListPanel /></Suspense>;
+    case 'primaryCTA':
+      return <Suspense fallback={PanelLoader}><PrimaryCTAPanel /></Suspense>;
     default:
-      return (
-        <div className="flex-grow flex items-center justify-center">
+       return (
+        <div className="flex-grow flex items-center justify-center h-full">
             <p className="text-center text-gray-500">
-              Select an element to customize.
+              under maintenance.
             </p>
         </div>
       );
@@ -33,7 +34,6 @@ const renderPanel = (selectedComponent) => {
 };
 
 const ThemeBuilder = ({ setMobileOpen }) => {
-  // ... rest of the component is unchanged
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const selectedComponent = useSelector(
     (state) => state.themeBuilder.selectedComponent
@@ -47,7 +47,6 @@ const ThemeBuilder = ({ setMobileOpen }) => {
         <main className="flex flex-1 overflow-hidden">
           <ElementList />
           <div className="flex-1 p-8 overflow-y-auto bg-white">
-            {/* The renderPanel function is now called here */}
             {renderPanel(selectedComponent)}
           </div>
           <div className="w-1/3 bg-gray-50 flex items-center justify-center border-l p-4">
@@ -67,7 +66,6 @@ const ThemeBuilder = ({ setMobileOpen }) => {
             <Preview />
         </div>
         <ElementList />
-        {/* And also here */}
         {renderPanel(selectedComponent)}
       </main>
     </div>

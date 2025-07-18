@@ -1,15 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { HamburgerIcon } from '../icons/Icons'; // Import the icon
+import { HamburgerIcon } from '../icons/Icons';
 
-// The header now accepts the function to open the mobile sidebar
 const Header = ({ setMobileOpen }) => {
   const themeName = useSelector((state) => state.themeBuilder.currentTheme.name);
 
   return (
     <header className="bg-white p-4 border-b flex justify-between items-center flex-shrink-0">
       <div className="flex items-center gap-4">
-        {/* Hamburger button, hidden on screens `md` and larger */}
         <button onClick={() => setMobileOpen(true)} className="md:hidden">
           <HamburgerIcon />
         </button>

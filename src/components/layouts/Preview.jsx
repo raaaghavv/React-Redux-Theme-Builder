@@ -8,7 +8,6 @@ const Preview = () => {
   );
 
   // --- Style Objects ---
-  // Safely access properties using optional chaining (?.) and provide defaults
   const titleStyles = {
     color: title?.colors?.text || '#000',
     fontSize: `${title?.textStyle?.size || 16}px`,
@@ -56,14 +55,10 @@ const Preview = () => {
     <div className="relative w-[300px] h-[600px] bg-black rounded-[40px] overflow-hidden shadow-2xl border-4 border-gray-800 transition-transform duration-300 origin-top lg:scale-100 md:scale-90 scale-80">
       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[100px] h-[25px] bg-black rounded-full z-20"></div>
       <div className="absolute top-0 left-0 w-full h-full bg-white text-gray-800 overflow-y-auto rounded-[40px] pt-12 px-4 pb-4">
-        {/* ... other static content ... */}
         
         <h1 style={titleStyles}>This is a Dynamic Title</h1>
         <h2 style={subtitleStyles}>And a dynamic subtitle</h2>
 
-        {/* ... Icon Grid ... */}
-        
-        {/* Render the options list only if it exists in the state */}
         {optionsList && (
             <div className="mt-6">
                 <h4 className="text-sm font-bold text-gray-600 mb-2">Choose an option:</h4>
@@ -79,7 +74,6 @@ const Preview = () => {
           <button style={ctaStyles}>Dynamic CTA</button>
         </div>
         
-        {/* ... Invite Section ... */}
       </div>
     </div>
   );

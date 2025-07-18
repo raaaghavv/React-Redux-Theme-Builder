@@ -6,7 +6,6 @@ import { selectComponent } from '../../redux/slices/themeBuilderSlice';
 const sections = {
   "Layout Elements": ["title", "subtitle", "optionsList"],
   "Interactive Elements": ["primaryCTA", "secondaryCTA", "ratingStars"],
-  "Controls": ["crossButton", "soundToggle"],
 };
 
 const formatComponentName = (name) => {
@@ -22,9 +21,8 @@ const ElementList = () => {
     // ---- DESKTOP VIEW: Sidebar ----
     return (
       <aside
-        className="flex-shrink-0 w-full lg:w-[30%] xl:w-1/4 min-w-[260px] bg-gray-50 p-4 lg:p-6 border-r overflow-y-auto
-        [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
+    className="flex-shrink-0 w-full lg:w-[30%] xl:w-1/4 min-w-[260px] bg-gray-50 p-4 lg:p-6 border-r overflow-y-auto"
+>
         {Object.entries(sections).map(([sectionTitle, components]) => (
           <div key={sectionTitle} className="mb-6">
             <h2 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
@@ -42,7 +40,6 @@ const ElementList = () => {
                     }`}
                     onClick={() => dispatch(selectComponent(name))}
                   >
-                    {/* This now correctly formats the name */}
                     {formatComponentName(name)}
                   </li>
                 )
@@ -55,14 +52,14 @@ const ElementList = () => {
   }
 
   // ---- TABLET & MOBILE VIEW: Dropdown ----
-  return (
+   return (
     <div className="w-full px-4 md:px-0">
         <label htmlFor="component-select" className="block text-sm font-medium text-gray-700 mb-1">
             Select Component to Edit
         </label>
         <select
             id="component-select"
-            className="w-full p-3 border border-gray-300 rounded-lg bg-white"
+            className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-800" 
             value={selectedComponent}
             onChange={(e) => dispatch(selectComponent(e.target.value))}
         >

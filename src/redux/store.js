@@ -9,7 +9,6 @@ const preloadedState = {
 export const store = configureStore({
   reducer: {
     themeBuilder: themeBuilderReducer,
-    // We will add the previewSlice reducer here later
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(localStorageMiddleware),
